@@ -5,10 +5,17 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-$routes->get('/starter', 'Home::starter');
 
-$routes->group('user', function ($routes) {
+ $routes->group('/auth', function ($routes) {
+    $routes->get('/', 'AuthController::index');
+    $routes->post('login', 'AuthController::login');
+    $routes->get('logout', 'AuthController::logout');
+ });
+ 
+$routes->get('/', 'Home::index', ['filter' => 'auth']);
+$routes->get('/starter', 'Home::starter', ['filter' => 'auth']);
+
+$routes->group('user',['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'UserController::index');
     $routes->get('create', 'UserController::create');
     $routes->post('store', 'UserController::store');
@@ -18,7 +25,7 @@ $routes->group('user', function ($routes) {
     $routes->get('show/(:num)', 'UserController::show/$1');
 });
 
-$routes->group('unit', function ($routes) {
+$routes->group('unit',['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'UnitController::index');
     $routes->get('create', 'UnitController::create');
     $routes->post('store', 'UnitController::store');
@@ -28,7 +35,7 @@ $routes->group('unit', function ($routes) {
     $routes->get('show/(:num)', 'UnitController::show/$1');
 });
 
-$routes->group('karyawan', function ($routes) {
+$routes->group('karyawan',['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'KaryawanController::index');
     $routes->get('create', 'KaryawanController::create');
     $routes->post('store', 'KaryawanController::store');
@@ -38,7 +45,7 @@ $routes->group('karyawan', function ($routes) {
     $routes->get('show/(:num)', 'KaryawanController::show/$1');
 });
 
-$routes->group('departemen', function ($routes) {
+$routes->group('departemen',['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'DepartemenController::index');
     $routes->get('create', 'DepartemenController::create');
     $routes->post('store', 'DepartemenController::store');
@@ -48,7 +55,7 @@ $routes->group('departemen', function ($routes) {
     $routes->get('show/(:num)', 'DepartemenController::show/$1');
 });
 
-$routes->group('penempatan', function ($routes) {
+$routes->group('penempatan',['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'PenempatanController::index');
     $routes->get('create', 'PenempatanController::create');
     $routes->post('store', 'PenempatanController::store');
