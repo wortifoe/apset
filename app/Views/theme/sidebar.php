@@ -78,9 +78,9 @@
 
                  <li class="sidebar-title">Forms &amp; Tables</li>
                  <li class="sidebar-item  ">
-                     <a href="form-layout.html" class='sidebar-link'>
-                         <i class="bi bi-file-earmark-medical-fill"></i>
-                         <span>Form Layout</span>
+                     <a href="/aset" class='sidebar-link'>
+                         <i class="bi bi-bag-fill"></i>
+                         <span>Aset</span>
                      </a>
                  </li>
 

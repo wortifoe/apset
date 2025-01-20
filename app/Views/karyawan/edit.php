@@ -44,7 +44,7 @@
                         <input type="text" name="norek" class="form-control" value="<?= $karyawan['norek']; ?>" required>
                     </div>
                     <div class="form-group" id="uploadForm">
-                        <label>Upload Tanda Tangan</label> <br>
+                        <label>Foto</label> <br>
                         <?php if (!empty($karyawan['file'])) : ?>
                             <img id="previewImage" src="<?= base_url('uploads/file/' . $karyawan['file']); ?>" alt="Gambar" width="100" height="100">
                             <br>

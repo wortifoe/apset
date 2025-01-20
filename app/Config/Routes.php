@@ -64,3 +64,13 @@ $routes->group('penempatan',['filter' => 'auth'], function ($routes) {
     $routes->get('delete/(:num)', 'PenempatanController::delete/$1');
     $routes->get('show/(:num)', 'PenempatanController::show/$1');
 });
+
+$routes->group('aset',['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'AsetController::index');
+    $routes->get('create', 'AsetController::create');
+    $routes->post('store', 'AsetController::store');
+    $routes->post('update/(:num)', 'AsetController::update/$1');
+    $routes->get('edit/(:num)', 'AsetController::edit/$1');
+    $routes->get('delete/(:num)', 'AsetController::delete/$1');
+    $routes->get('show/(:num)', 'AsetController::show/$1');
+});
