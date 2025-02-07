@@ -50,6 +50,8 @@
                                             } elseif ($row['level_user'] == 2) {
                                                 echo '<span class="badge bg-success">Kepala Departemen</span>';
                                             } elseif ($row['level_user'] == 3) {
+                                                echo '<span class="badge bg-success">Kepala Dinas</span>';
+                                            }elseif ($row['level_user'] == 4) {
                                                 echo '<span class="badge bg-warning">User</span>';
                                             } else {
                                                 echo '<span class="badge bg-secondary">Unknown</span>';

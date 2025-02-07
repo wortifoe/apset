@@ -19,6 +19,11 @@
             <div class="card-body">
                 <form class="forms-sample" action="/unit/store" method="post" enctype="multipart/form-data">
                     <div class="form-group">
+                        <label>Kode Barang</label>
+                        <input type="text" name="kode_barang" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
                         <label>Nama Barang</label>
                         <input type="text" name="nama_barang" class="form-control" required>
                     </div>
@@ -33,11 +38,11 @@
                         <select name="status" class="form-control" required>
                             <option value="bergerak">Bergerak</option>
                             <option value="non_bergerak">Non Bergerak</option>
-                        
+
                         </select>
                     </div>
 
-            
+
                     <div class="text-end">
                         <button type="submit" class="btn btn-success mr-2">Simpan</button>
                         <a href="<?= base_url('/unit'); ?>" class="btn btn-danger">Batal</a>

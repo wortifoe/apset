@@ -8,7 +8,7 @@
 </header>
 
 <div class="page-heading">
-    <h5>Tambah Data Aset</h5>
+    <h5>Tambah Berita Acara</h5>
 </div>
 <?= $this->endSection() ?>
 
@@ -17,71 +17,60 @@
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form class="forms-sample" action="/aset/store" method="post" enctype="multipart/form-data">
+                <form class="forms-sample" action="/bakerusakan/store" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="id_unit">Nama Barang</label>
-                        <select name="id_unit" class="form-control" required>
+                        <label>Nama Barang</label>
+                        <select name="id_aset" class="form-control" required>
 
-                            <?php foreach ($unit as $un) : ?>
-                                <option value="<?= $un['id']; ?>"><?= $un['nama_barang']; ?></option>
+                            <?php foreach ($aset as $as) : ?>
+                                <option value="<?= $as['id']; ?>"><?= $as['kode_barang']; ?> - <?= $as['merk']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Merk</label>
-                        <input type="text" name="merk" class="form-control" required>
+                        <label>Tanggal</label>
+                        <input type="date" name="tanggal" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Jumlah</label>
-                        <input type="text" name="jumlah" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status Barang</label>
-                        <select name="status" class="form-control" required>
-                            <option value="baik">Baik</option>
-                            <option value="rusak">Rusak</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_penempatan">Penempatan</label>
-                        <select name="id_penempatan" class="form-control" required>
-
-                            <?php foreach ($penempatan as $pn) : ?>
-                                <option value="<?= $pn['id']; ?>"><?= $pn['lokasi']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="karyawan">Karyawan</label>
-                        <select class="form-control" id="karyawan" name="id_karyawan">
+                        <label>Diajukan</label>
+                        <select class="form-control" name="diajukan">
                             <option value="" disabled>Pilih Karyawan</option>
                             <?php foreach ($karyawan as $row): ?>
                                 <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
                             <?php endforeach; ?>
-                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Diketahui</label>
+                        <select class="form-control" name="diketahui">
+                            <option value="" disabled>Pilih Karyawan</option>
+                            <?php foreach ($karyawan as $row): ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Disetujui</label>
+                        <select class="form-control" name="disetujui">
+                            <option value="" disabled>Pilih Karyawan</option>
+                            <?php foreach ($karyawan as $row): ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
-                    <div class="form-group" id="penanggung-jawab-group" style="display: none;">
-                        <label for="penanggung-jawab">Penanggung Jawab</label>
-                        <input type="text" class="form-control" id="penanggung-jawab" name="penanggung_jawab" placeholder="Masukkan Penanggung Jawab">
-                    </div>
                     <div class="form-group">
-                        <label>Foto</label> <br>
+                        <label>Lampiran</label> <br>
                         <div id="previewContainer" style="display: none;">
                             <img id="previewImage" src="" alt="Pratinjau Gambar" width="100" height="100">
                         </div>
                         <label><small>Upload dalam Format JPG dan PNG</small></label> <br>
 
-                        <input type="file" name="file" id="fileUpload" class="form-control-file" accept=".jpg, .jpeg, .png">
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan</label>
-                        <input type="text" name="keterangan" class="form-control" required>
+                        <input type="file" name="lampiran" id="fileUpload" class="form-control-file" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                        <a href="<?= base_url('/aset'); ?>" class="btn btn-danger">Batal</a>
+                        <a href="<?= base_url('/bakerusakan'); ?>" class="btn btn-danger">Batal</a>
                     </div>
 
                 </form>
@@ -99,16 +88,6 @@
 <!-- js -->
 <?= $this->section('javascript') ?>
 <script>
-    document.getElementById('karyawan').addEventListener('change', function() {
-        const penanggungJawabGroup = document.getElementById('penanggung-jawab-group');
-        if (this.value === 'other') {
-            penanggungJawabGroup.style.display = 'block';
-            document.getElementById('penanggung-jawab').value = ''; // Reset value jika sebelumnya ada
-        } else {
-            penanggungJawabGroup.style.display = 'none';
-            document.getElementById('penanggung-jawab').value = null; // Set value menjadi NULL
-        }
-    });
 
     function previewImage(input) {
         if (input.files && input.files[0]) {

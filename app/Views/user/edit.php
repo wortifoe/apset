@@ -38,7 +38,8 @@
                         <select name="level_user" class="form-control" required>
                             <option value="1" <?= ($user['level_user'] == '1') ? 'selected' : ''; ?>>Admin</option>
                             <option value="2" <?= ($user['level_user'] == '2') ? 'selected' : ''; ?>>Kepala Departemen</option>
-                            <option value="3" <?= ($user['level_user'] == '3') ? 'selected' : ''; ?>>Pengguna</option>
+                            <option value="3" <?= ($user['level_user'] == '3') ? 'selected' : ''; ?>>Kepala Dinas</option>
+                            <option value="4" <?= ($user['level_user'] == '4') ? 'selected' : ''; ?>>Pengguna</option>
                         </select>
                     </div>
 

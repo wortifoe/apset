@@ -74,3 +74,43 @@ $routes->group('aset',['filter' => 'auth'], function ($routes) {
     $routes->get('delete/(:num)', 'AsetController::delete/$1');
     $routes->get('show/(:num)', 'AsetController::show/$1');
 });
+
+
+$routes->group('bakerusakan',['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'BaKerusakanController::index');
+    $routes->get('create', 'BaKerusakanController::create');
+    $routes->post('store', 'BaKerusakanController::store');
+    $routes->post('update/(:num)', 'BaKerusakanController::update/$1');
+    $routes->get('edit/(:num)', 'BaKerusakanController::edit/$1');
+    $routes->get('delete/(:num)', 'BaKerusakanController::delete/$1');
+    $routes->get('show/(:num)', 'BaKerusakanController::show/$1');
+    $routes->get('cetak/(:num)', 'BaKerusakanController::cetak/$1');
+    $routes->post('setujuikadep', 'BaKerusakanController::setujuikadep');
+    $routes->post('tolakkadep', 'BaKerusakanController::tolakkadep');
+    $routes->post('setujuikadis', 'BaKerusakanController::setujuikadis');
+    $routes->post('tolakkadis', 'BaKerusakanController::tolakkadis');
+});
+
+$routes->group('laporan',['filter' => 'auth'], function ($routes) {
+    $routes->get('barangrusak', 'AsetController::barangrusak');
+    $routes->get('layakpakai', 'AsetController::layakpakai');
+    $routes->get('penempatan', 'AsetController::penempatan');
+    $routes->get('cetakrusak', 'AsetController::cetakrusak');
+    $routes->get('cetaklayak', 'AsetController::cetaklayak');
+    $routes->get('cetakpenempatan', 'AsetController::cetakpenempatan');
+});
+
+$routes->group('rekomendasi',['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'RekomendasiController::index');
+    $routes->get('create', 'RekomendasiController::create');
+    $routes->post('store', 'RekomendasiController::store');
+    $routes->post('update/(:num)', 'RekomendasiController::update/$1');
+    $routes->get('edit/(:num)', 'RekomendasiController::edit/$1');
+    $routes->get('delete/(:num)', 'RekomendasiController::delete/$1');
+    $routes->get('show/(:num)', 'RekomendasiController::show/$1');
+    $routes->get('cetak/(:num)', 'RekomendasiController::cetak/$1');
+    $routes->post('setujuikadep', 'RekomendasiController::setujuikadep');
+    $routes->post('tolakkadep', 'RekomendasiController::tolakkadep');
+    $routes->post('setujuikadis', 'RekomendasiController::setujuikadis');
+    $routes->post('tolakkadis', 'RekomendasiController::tolakkadis');
+});

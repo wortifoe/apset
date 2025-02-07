@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="status">Status Barang</label>
                         <select name="status" class="form-control" required>
-                            <option value="baru" <?= $aset['status'] == 'baru' ? 'selected' : '' ?>>Baru</option>
+                            <option value="baik" <?= $aset['status'] == 'baik' ? 'selected' : '' ?>>Baik</option>
                             <option value="rusak" <?= $aset['status'] == 'rusak' ? 'selected' : '' ?>>Rusak</option>
                         </select>
                     </div>

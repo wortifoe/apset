@@ -1,0 +1,216 @@
+/* CSS untuk tampilan umum */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Ukuran font standar */
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 210mm; /* Lebar A4 */
+    height: 297mm; /* Tinggi A4 */
+    border: 2px solid #000;
+    margin: auto;
+    padding: 20mm;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+.header .logo {
+    width: 15mm;
+    height: auto;
+   
+    margin-right: 10px;
+}
+
+.header .logor {
+    width: 15mm;
+    height: auto;
+   
+    margin-left: 10px;
+}
+.header .title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header .subtitle {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sub-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sub-header .title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sub-title {
+    font-size: 14px;
+    text-align: center;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+/* Gaya untuk konten utama */
+.row {
+    margin-top: 10px;
+}
+
+.col-md-12 {
+    margin-bottom: 20px;
+}
+
+
+/* Aturan untuk kolom tanda tangan */
+.row .col-md-4 {
+    text-align: center;
+}
+
+
+/* Pengaturan untuk elemen yang berisi garis */
+.garis-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.garis-atas,
+.garis-bawah {
+    flex: 0 0 5px;
+    background-color: #000;
+}
+
+/* CSS untuk pencetakan */
+@media print {
+    @page {
+        size: A4;
+        margin: 10mm; /* Kurangi margin pada halaman agar tidak terlalu kedalam */
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 10mm; /* Mengurangi padding pada kontainer untuk mengurangi ruang kosong */
+        border: none;
+        box-sizing: border-box;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+    }
+
+    .header .logo {
+        width: 15mm;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    .header .logor {
+        width: 15mm;
+        height: auto;
+        margin-left: 10px;
+    }
+    
+    .header .title {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .header .subtitle {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .sub-header {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .sub-header .title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .page-break {
+        display: none;
+    }
+
+    .row {
+        margin-top: 10px;
+    }
+
+    /* Menyembunyikan tombol print saat mencetak */
+    #printButton {
+        display: none;
+    }
+
+    .sub-title {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .col-md-12 {
+        margin-bottom: 10px;
+    }
+
+    /* Menyesuaikan gambar pada saat pencetakan */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Menghilangkan garis tambahan jika ada */
+    .garis-container {
+        display: none;
+    }
+
+    /* Menjaga jarak dan layout tetap rapi */
+    .row .col-md-4 {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Menjaga konten pada halaman agar tidak terlalu terpotong */
+    .container {
+        page-break-inside: avoid;
+    }
+
+    /* Menghapus margin atau padding yang tidak perlu */
+    .header, .sub-header, .title, .sub-title {
+        margin: 0;
+        padding: 0;
+    }
+
+}
+

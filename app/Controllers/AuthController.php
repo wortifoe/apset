@@ -52,8 +52,11 @@ class AuthController extends BaseController
 
             session()->set($userData);
             // dd($userData);
-
-            return redirect()->to('/');
+            if ($user['level_user'] == 1) {
+                return redirect()->to('/user'); // Redirect ke halaman user jika level_user = 1 (Admin)
+            } else {
+                return redirect()->to('/aset'); // Redirect ke halaman aset jika level_user ≠ 1 (Kadep/Kadis)
+            }
         } else {
             return redirect()->back()->withInput()->with('error', 'Username atau password salah.');
         }

@@ -29,6 +29,7 @@ class UnitController extends BaseController
     {
         $data = [
             'nama_barang' => $this->request->getPost('nama_barang'),
+            'kode_barang' => $this->request->getPost('kode_barang'),
             'satuan' => $this->request->getPost('satuan'),
             'status' => $this->request->getPost('status'),
             
@@ -59,6 +60,7 @@ class UnitController extends BaseController
 
         $data = [
             'nama_barang' => $this->request->getPost('nama_barang'),
+            'kode_barang' => $this->request->getPost('kode_barang'),
             'satuan' => $this->request->getPost('satuan'),
             'status' => $this->request->getPost('status'),
             

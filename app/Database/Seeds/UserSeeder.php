@@ -25,13 +25,20 @@ class UserSeeder extends Seeder
                 'level_user' => 2, // Sesuaikan dengan role_id yang sesuai
             ],
 
+            [
+                'nama' => 'Kepala Dinas',
+                'username' => 'kadis',
+                'email' => 'kadis@gmail.com',
+                'password' => password_hash('kadis123', PASSWORD_DEFAULT), // Ganti dengan password yang di-hash
+                'level_user' => 3, // Sesuaikan dengan role_id yang sesuai
+            ],
 
             [
                 'nama' => 'MyUser',
                 'username' => 'user',
                 'email' => 'user@gmail.com',
                 'password' => password_hash('user123', PASSWORD_DEFAULT), // Ganti dengan password yang di-hash
-                'level_user' => 3, // Sesuaikan dengan role_id yang sesuai
+                'level_user' => 4, // Sesuaikan dengan role_id yang sesuai
             ],
 
         ];

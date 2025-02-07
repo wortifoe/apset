@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Satuan</th>
                                 <th>Status</th>
@@ -39,6 +40,7 @@
                                 <?php foreach ($unit as $row) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
+                                        <td><?= $row['kode_barang']; ?></td>
                                         <td><?= $row['nama_barang']; ?></td>
                                         <td><?= $row['satuan']; ?></td>
                                         <td>

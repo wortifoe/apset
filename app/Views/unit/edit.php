@@ -17,15 +17,20 @@
     <div class="col-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-            <form action="/unit/update/<?= $unit['id']; ?>" enctype="multipart/form-data" method="post">
+                <form action="/unit/update/<?= $unit['id']; ?>" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label>Kode Barang</label>
+                        <input type="text" name="kode_barang" class="form-control" value="<?= $unit['kode_barang']; ?>" required>
+                    </div>
+
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input type="text" name="nama_barang" class="form-control"  value="<?= $unit['nama_barang']; ?>" required>
+                        <input type="text" name="nama_barang" class="form-control" value="<?= $unit['nama_barang']; ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Satuan</label>
-                        <input type="text" name="satuan" class="form-control" value="<?= $unit['satuan']; ?>"  required>
+                        <input type="text" name="satuan" class="form-control" value="<?= $unit['satuan']; ?>" required>
                     </div>
 
 
@@ -34,11 +39,11 @@
                         <select name="status" class="form-control" required>
                             <option value="bergerak" <?= ($unit['status'] == 'bergerak') ? 'selected' : ''; ?>>Bergerak</option>
                             <option value="non_bergerak" <?= ($unit['status'] == 'non_bergerak') ? 'selected' : ''; ?>>Non Bergerak</option>
-                          
+
                         </select>
                     </div>
 
-            
+
                     <div class="text-end">
                         <button type="submit" class="btn btn-success mr-2">Simpan</button>
                         <a href="<?= base_url('/unit'); ?>" class="btn btn-danger">Batal</a>

@@ -8,7 +8,7 @@
 </header>
 
 <div class="page-heading">
-    <h5>Data Aset</h5>
+    <h5>Laporan Penempatan Barang</h5>
 </div>
 <?= $this->endSection() ?>
 
@@ -18,9 +18,16 @@
         <div class="card">
             <div class="card-header">
                 <div class="text-end">
-                <?php if (session('level_user') == 1):?>
-                    <a href="aset/create/" class="btn btn-primary">Tambah data</a>
-                <?php endif;?>
+                    <button class="btn btn-primary dropdown-toggle me-1" type="button"
+                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Cetak Data
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/laporan/cetakpenempatan?jenis=bergerak" target="_blank">Aset Bergerak</a>
+                        <a class="dropdown-item" href="/laporan/cetakpenempatan?jenis=non_bergerak" target="_blank">Aset Non Bergerak</a>
+                        <a class="dropdown-item" href="/laporan/cetakpenempatan?jenis=semua" target="_blank">Cetak Semua Data</a>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -29,16 +36,15 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Kode Barang</th> 
                                 <th>Nama Barang</th>
-                                <th>Kode Barang</th>
                                 <th>Merk</th>
                                 <th>Jumlah</th>
-                                <th>Status</th>
-                                <th>Penempatan</th>
                                 <th>Penanggung Jawab</th>
-                                <th>Foto</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <th>Kondisi Barang</th>
+                                <th>Jenis Barang</th>
+                                <th>Penempatan</th>
+                                <th>Lokasi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,10 +53,13 @@
                                 <?php foreach ($aset as $row) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
+                                        <td><?= $row['kode_barang']; ?></td> 
                                         <td><?= $row['nama_barang']; ?></td>
-                                        <td><?= $row['kode_barang']; ?></td>
                                         <td><?= $row['merk']; ?></td>
                                         <td><?= $row['jumlah']; ?></td>
+                                     
+                                        <td><?= $row['penanggung_jawab']; ?></td>
+                                       
                                         <td>
                                             <?php
                                             if ($row['status'] == "baik") {
@@ -62,28 +71,23 @@
                                             }
                                             ?>
                                         </td>
-                                        <td><?= $row['penempatan']; ?></td>
-                                        <td><?= $row['penanggung_jawab']; ?></td>
-                                        <td><?= !empty($row['file']) ? '<img src="' . base_url('uploads/file/' . $row['file']) . '" alt="Gambar" width="100" height="100">' : '-' ?></td>
-                                        <td><?= $row['keterangan']; ?></td>
                                         <td>
-                                        <?php if (session('level_user') == 1):?>
-                                            <a href="/aset/edit/<?= $row['id']; ?>"
-                                                class="btn btn-sm btn-success">Edit</a>
-                                            <a href="/aset/delete/<?= $row['id']; ?>"
-                                                class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                Delete
-                                            </a>
-                                        <?php else: ?>
-                                            <p class="text-center">....</p>
-                                        <?php endif;?>
-                                        </td>
+                                            <?php
+                                            if ($row['jenis'] == "bergerak") {
+                                                echo '<span class="badge bg-primary">Aset Bergerak</span>';
+                                            } elseif ($row['jenis'] == "non_bergerak") {
+                                                echo '<span class="badge bg-success">Aset Non Bergerak</span>';
+                                            } else {
+                                                echo '<span class="badge bg-secondary">Unknown</span>';
+                                            }
+                                            ?>
+                                        </td>   
+                                        <td><?= $row['penempatan']; ?></td>
+                                        <td><?= $row['alamat']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td class="text-center">...</td>
                                     <td class="text-center">...</td>
                                     <td class="text-center">...</td>
                                     <td class="text-center">...</td>
@@ -107,15 +111,15 @@
 <?= $this->endSection() ?>
 <!-- css -->
 <?= $this->section('styles') ?>
-<link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
-<link rel="stylesheet" crossorigin href="./assets/compiled/css/table-datatable-jquery.css">
+<link rel="stylesheet" href="/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" crossorigin href="/assets/compiled/css/table-datatable-jquery.css">
 <?= $this->endSection() ?>
 
 <!-- js -->
 <?= $this->section('javascript') ?>
-<script src="assets/extensions/jquery/jquery.min.js"></script>
-<script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="/assets/extensions/jquery/jquery.min.js"></script>
+<script src="/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $('#table1').DataTable({
         language: {

@@ -43,7 +43,8 @@
                         <select name="level_user" class="form-control" required>
                             <option value="1">Admin</option>
                             <option value="2">Kepala Departemen</option>
-                            <option value="3">Pengguna</option>
+                            <option value="3">Kepala Dinas</option>
+                            <option value="4">Pengguna</option>
                         </select>
                     </div>
 

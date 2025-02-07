@@ -169,4 +169,70 @@ class AsetController extends BaseController
         // Redirect ke halaman aset setelah berhasil dihapus
         return redirect()->to('/aset');
     }
+
+    public function barangrusak()
+    {
+        $data['aset'] = $this->asetModel->getAsetRusak();
+        return view('laporan/barangrusak', $data);
+    }
+
+    public function cetakrusak()
+    {
+        $jenis = $this->request->getGet('jenis'); // Ambil parameter 'jenis' dari URL
+
+        // Ambil data sesuai dengan jenis aset
+        if ($jenis == 'bergerak') {
+            $data['aset'] = $this->asetModel->getAsetRusakBergerak();
+        } elseif ($jenis == 'non_bergerak') {
+            $data['aset'] = $this->asetModel->getAsetRusakNonBergerak();
+        } else { // Default: cetak semua data
+            $data['aset'] = $this->asetModel->getAsetRusak();;
+        }
+
+        return view('cetak/rusak', $data);
+    }
+
+    public function layakpakai()
+    {
+        $data['aset'] = $this->asetModel->getAsetBaik();
+        return view('laporan/baranglayak', $data);
+    }
+
+    public function cetaklayak()
+    {
+        $jenis = $this->request->getGet('jenis'); // Ambil parameter 'jenis' dari URL
+
+        // Ambil data sesuai dengan jenis aset
+        if ($jenis == 'bergerak') {
+            $data['aset'] = $this->asetModel->getAsetBaikBergerak();
+        } elseif ($jenis == 'non_bergerak') {
+            $data['aset'] = $this->asetModel->getAsetBaikNonBergerak();
+        } else { // Default: cetak semua data
+            $data['aset'] = $this->asetModel->getAsetBaik();;
+        }
+
+        return view('cetak/layakpakai', $data);
+    }
+
+    public function penempatan()
+    {
+        $data['aset'] = $this->asetModel->getAset();
+        return view('laporan/penempatan', $data);
+    }
+
+    public function cetakpenempatan()
+    {
+        $jenis = $this->request->getGet('jenis'); // Ambil parameter 'jenis' dari URL
+
+        // Ambil data sesuai dengan jenis aset
+        if ($jenis == 'bergerak') {
+            $data['aset'] = $this->asetModel->getAsetBergerak();
+        } elseif ($jenis == 'non_bergerak') {
+            $data['aset'] = $this->asetModel->getAsetNonBergerak();
+        } else { // Default: cetak semua data
+            $data['aset'] = $this->asetModel->getAset();;
+        }
+
+        return view('cetak/penempatan', $data);
+    }
 }
